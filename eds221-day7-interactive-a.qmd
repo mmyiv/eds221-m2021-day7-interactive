@@ -1,0 +1,40 @@
+---
+title: "eds221-day7-interactive-a"
+author: "mish"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+library(lubridate)
+```
+
+```{r}
+# Refresher 1
+
+biscoe_dream <- penguins %>%
+  filter(island %in% c("Biscoe", "Dream")) %>%
+  select(-c(sex, year)) %>%
+  mutate(body_mass_kg = body_mass_g / 1000) %>%
+  rename(location = island)
+
+```
+
+```{r}
+# Refresher 2
+
+adelie <- penguins %>%
+  filter(species == "Adelie") %>%
+  filter(!is.na(flipper_length_mm)) %>%
+  group_by(sex) %>%
+  summarise(mean = mean(flipper_length_mm, na.rm = TRUE), sd = sd(flipper_length_mm, na.rm = TRUE), count = n(), na.rm = TRUE)
+  
+```
+
+```{r}
+
+```
+
